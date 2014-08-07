@@ -1,0 +1,15 @@
+/target/*
+.class
+libs/*.jar
+.classpath
+.project
+.prefs
+.idea
+.settings
+index.html
+lwtest.iml
+/target
+*.log
+*.jpg
+/src/main/java/*.html
+.metadata/*
