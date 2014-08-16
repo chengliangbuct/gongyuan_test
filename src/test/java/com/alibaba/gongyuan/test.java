@@ -7,14 +7,20 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.gongyuan.entity.User;
+import com.alibaba.gongyuan.runner.JUnit4ClassLog4jRunner;
 import com.alibaba.gongyuan.service.UserService;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+import org.apache.log4j.Logger;  
+
+@RunWith(JUnit4ClassLog4jRunner.class)
 @ContextConfiguration(locations = "/spring-config.xml")
+//@Transactional
 public class test {
+    
+    private static Logger logger = Logger.getLogger(test.class);
     
     @Autowired UserService userService ;
     
@@ -22,7 +28,8 @@ public class test {
     
     @Test
     public void countAll(){
-        System.out.println("数据库中的记录条数:"  + userService.countAll());
+        logger.info("数据库中的记录条数:"  + userService.countAll());
+        //System.out.println("数据库中的记录条数:"  + userService.countAll());
     }
     
     @Test
