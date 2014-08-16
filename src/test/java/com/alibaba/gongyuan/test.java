@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.gongyuan.entity.User;
 import com.alibaba.gongyuan.runner.JUnit4ClassLog4jRunner;
@@ -16,6 +17,7 @@ import org.apache.log4j.Logger;
 
 @RunWith(JUnit4ClassLog4jRunner.class)
 @ContextConfiguration(locations = "/spring-config.xml")
+//@Transactional
 public class test {
     
     private static Logger logger = Logger.getLogger(test.class);
