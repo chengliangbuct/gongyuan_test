@@ -139,7 +139,6 @@
   </dependencies>
   
 	<build>
-	  <pluginManagement><!-- 解决m2插件不识别<executions> -->
 	  <plugins>
 	  	<plugin>
 	    	<artifactId>maven-compiler-plugin</artifactId>
@@ -150,44 +149,31 @@
 	      		<encoding>utf-8</encoding>
 	    	</configuration>
 	   </plugin>
-	   	<plugin>
-	    	<groupId>org.codehaus.mojo</groupId>
-	    	<artifactId>exec-maven-plugin</artifactId>
-	    	<executions>
-		    <execution>
-		    	<id>my-execution</id>
-		      	<phase>compile</phase>
-		      	<goals>
-		        	<goal>java</goal>
-		      	</goals>
-		    </execution>
-		 	</executions>
-	    	<configuration>
-	      		<mainClass>com.hmkcode.spring.mybatis.App</mainClass><!-- 忽略 -->
-	    	</configuration>
-	   	</plugin>
+	   
+	   <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-pmd-plugin</artifactId>
+            <version>2.7.1</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>check</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <configuration>
+                <failurePriority>2</failurePriority>
+                <targetJdk>1.6</targetJdk>
+                <rulesets>
+                    <ruleset>/pmd-rulesets.xml</ruleset>
+                </rulesets>
+                <linkXRef>false</linkXRef>
+            </configuration>
+        </plugin>
+	   
 	  </plugins>
-	  </pluginManagement>
  	
-	  
-	  
-<!--PMD报告设置 -->
-		 <plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-pmd-plugin</artifactId>
-			<version>3.2</version>
-			<configuration>
-			  <rulesets>
-				<!-- Two rule sets that come bundled with PMD -->
-				<ruleset>/rulesets/java/braces.xml</ruleset>
-				<ruleset>/rulesets/java/naming.xml</ruleset>
-				<!-- Custom local file system rule set -->
-				<!-- ruleset>d:\rulesets\strings.xml</ruleset-->
-				<!-- Custom remote rule set accessed via a URL -->
-				<!--  ruleset>http://localhost/design.xml</ruleset-->
-			  </rulesets>
-			</configuration>
-		  </plugin>
-  </build>
+  	</build>
  	
 </project>
